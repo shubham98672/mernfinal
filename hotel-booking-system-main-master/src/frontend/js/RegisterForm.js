@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import img4 from "../../assets/bed5.jpg";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userRole, setUserRole] = useState("user"); // Default role is "user"
+  const [userRole, setUserRole] = useState("user");
   const navigate = useNavigate();
 
   const registerUser = async (e) => {
@@ -33,14 +35,22 @@ export default function RegistrationForm() {
       console.log("Server response:", result);
 
       if (result.message === "User registration successful") {
-        // If registration is successful, navigate to the welcome page
-        navigate("/welcome");
+        toast.success("Registration Successful!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        setTimeout(() => {
+          navigate("/welcome");
+        }, 2000);
       } else {
-        // Handle registration error
-        console.error("Registration failed");
+        toast.error(result.message || "Registration failed. Please try again.", {
+          position: toast.POSITION.TOP_CENTER,
+        });
       }
     } catch (error) {
       console.error("Error sending registration data:", error);
+      toast.error("An error occurred. Please try again later.", {
+        position: toast.POSITION.TOP_CENTER,
+      });
     }
   };
 
@@ -65,16 +75,15 @@ export default function RegistrationForm() {
         }}
       >
         <h1>User Registration Form</h1>
-        <br/>
+        <br />
         <Form onSubmit={registerUser}>
           <Form.Group controlId="formUsername">
-            <Form.Label >Username</Form.Label>
+            <Form.Label>Username</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter your username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              
             />
           </Form.Group>
 
@@ -85,7 +94,7 @@ export default function RegistrationForm() {
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={{borderRadius:0}}
+              style={{ borderRadius: 0 }}
             />
           </Form.Group>
 
@@ -96,7 +105,7 @@ export default function RegistrationForm() {
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={{borderRadius:0}}
+              style={{ borderRadius: 0 }}
             />
           </Form.Group>
 
@@ -107,7 +116,7 @@ export default function RegistrationForm() {
               placeholder="Confirm your password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              style={{borderRadius:0}}
+              style={{ borderRadius: 0 }}
             />
           </Form.Group>
 
@@ -117,7 +126,7 @@ export default function RegistrationForm() {
               as="select"
               value={userRole}
               onChange={(e) => setUserRole(e.target.value)}
-              style={{borderRadius:0}}
+              style={{ borderRadius: 0 }}
             >
               <option value="user">User</option>
               <option value="staff">Staff</option>
@@ -131,9 +140,9 @@ export default function RegistrationForm() {
               Register
             </Button>
 
-            <div style={{ width: 10 }}></div> {/* Add a gap of 10 pixels between buttons */}
+            <div style={{ width: 10 }}></div>
 
-            <Button variant="primary" type="button"  style={{ borderRadius: "0" }}>
+            <Button variant="primary" type="button" style={{ borderRadius: "0" }}>
               Login
             </Button>
           </div>
@@ -148,9 +157,10 @@ export default function RegistrationForm() {
           height: "100%",
           backgroundImage: `url(${img4})`,
           backgroundSize: "cover",
-          filter: "blur(5px)", // Apply blur to the background image
+          filter: "blur(5px)",
         }}
       ></div>
+      <ToastContainer />
     </div>
   );
 }

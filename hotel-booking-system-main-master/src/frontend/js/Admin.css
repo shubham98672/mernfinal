@@ -1,0 +1,79 @@
+/* Admin.css */
+
+/* Layout and background styling */
+.site-layout-background {
+    background: #f0f2f5;
+  }
+  
+  /* Sidebar Menu */
+  .ant-menu-item {
+    font-size: 16px;
+    line-height: 40px;
+  }
+  
+  .ant-menu-item-selected {
+    background-color: #1890ff !important;
+    color: #fff !important;
+  }
+  
+  /* Header styling */
+  .site-layout-background .ant-layout-header {
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  
+  /* Content styling */
+  .ant-layout-content {
+    background: #fff;
+    padding: 24px;
+  }
+  
+  /* Cards styling */
+  .ant-card {
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ant-card-title {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  /* Tabs and Panels */
+  .ant-tabs-tab {
+    font-size: 16px;
+  }
+  
+  .ant-collapse-header {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* Table styling */
+  .ant-table-thead > tr > th {
+    background-color: #fafafa;
+    font-weight: 600;
+  }
+  
+  .ant-table-tbody > tr:hover > td {
+    background-color: #e6f7ff;
+  }
+  
+  /* List styling */
+  .ant-list-item-meta-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /* Badge styling */
+  .ant-badge {
+    font-size: 14px;
+  }
+  
+  /* Additional styling for cards and rows */
+  .row-card {
+    margin-bottom: 16px;
+  }
+  
+  

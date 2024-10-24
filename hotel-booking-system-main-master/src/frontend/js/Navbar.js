@@ -33,7 +33,7 @@ const Navbar = () => {
               Booking
             </Link>
           </li>
-          <Link to="/admin" className="nav-link">
+          <Link to="/Admin" className="nav-link">
   Dashboard
 </Link>
           
